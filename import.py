@@ -1,7 +1,7 @@
 ###	File:		UMich Men's Wrestling Importation Script	###
-###	Version:	v1.0										###
-###	Author: 	Chad Kijewski								###
-###	Updated:	11/5/2012									###
+###	Version:	v1.0						###
+###	Author: 	Chad Kijewski					###
+###	Updated:	11/5/2012					###
 
 import mysql.connector
 import datetime
