@@ -257,7 +257,7 @@ for id, value in sorted(uniqname.iteritems(), key=lambda (k,v): (v,k), reverse=T
 	elif int(weightclass[id]) <= 174: wclass = 6
 	elif int(weightclass[id]) <= 184: wclass = 7
 	elif int(weightclass[id]) <= 197: wclass = 8
-	elif int(weightclass[id]) <= 235: wclass = 9
+	elif int(weightclass[id]) <= 285: wclass = 9
 	else: wclass = 10
 	
 	# Try to select his information from the 'user' table.
