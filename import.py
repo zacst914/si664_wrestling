@@ -19,6 +19,7 @@ uniqname = {}
 week = {}
 bout = {}
 opponent = {}
+opponentteam = {}
 weightclass = {}
 firsttakedown = {}
 firsttakedownopp = {}
@@ -43,6 +44,8 @@ technicalfallnf = {}
 technicalfallnonf = {}
 techincalfallnfopp = {}
 technicalfallnonfopp = {}
+forfeit = {}
+forfeitopp = {}
 injurydefault = {}
 injurydefaultopp = {}
 stallwarning = {}
@@ -86,7 +89,7 @@ for line in fhand:
 
 	# Split each line into fields.
 	try:
-		(LASTNAME,FIRSTNAME,UNIQUENAME,WEEK,BOUT,OPPONENT,WEIGHTCLASS,FIRSTTAKEDOWN,FIRSTTAKEDOWNOPP,TAKEDOWNS,TAKEDOWNSOPP,TWOPOINTNF,TWOPOINTNFOPP,THREEPOINTNF,THREEPOINTNFOPP,PIN,PINSOPP,ESCAPES,ESCAPESOPP,REVERSALS,REVERSALSOPP,WIN,DECISION,DECISIONOPP,MAJORDECISION,MAJORDECISIONOPP,TECHNICALFALLNF,TECHNICALFALLNONF,TECHINCALFALLNFOPP,TECHNICALFALLNONFOPP,INJURYDEFAULT,INJURYDEFAULTOPP,STALLWARNING,STALLWARNINGOPP,STALLPOINTS,STALLPOINTSOPP,CAUTION,CAUTIONOPP,CAUTIONPOINTS,CAUTIONPOINTSOPP,THIRDPERIODWIN,NEUTRALATTACKS,TIMESATTACKED,ATTACKSSTOPPED,STOPPOINTS,FIRSTBACKCENTER,LEGATTACK,LEGATTACKFINISH,EDGEFINISH,LATETDRECOVERY,LATETDHELD,LATETDRECOVERYOPP,LATETDHELDOPP,TEAMPOINTSDUAL,TEAMPOINTSTOURN,RIDINGTIME,RIDINGTIMEPT,RIDINGTIMEOPP,RIDINGTIMEPTOPP,DUAL,TOURNAMENT) = line.split('\t')
+		(LASTNAME,FIRSTNAME,UNIQUENAME,WEEK,BOUT,OPPONENT,OPPONENTWEIGHTCLASS,WEIGHTCLASS,FIRSTTAKEDOWN,FIRSTTAKEDOWNOPP,TAKEDOWNS,TAKEDOWNSOPP,TWOPOINTNF,TWOPOINTNFOPP,THREEPOINTNF,THREEPOINTNFOPP,PIN,PINSOPP,ESCAPES,ESCAPESOPP,REVERSALS,REVERSALSOPP,WIN,DECISION,DECISIONOPP,MAJORDECISION,MAJORDECISIONOPP,TECHNICALFALLNF,TECHNICALFALLNONF,TECHINCALFALLNFOPP,TECHNICALFALLNONFOPP,FORFEIT,FORFEITOPP,INJURYDEFAULT,INJURYDEFAULTOPP,STALLWARNING,STALLWARNINGOPP,STALLPOINTS,STALLPOINTSOPP,CAUTION,CAUTIONOPP,CAUTIONPOINTS,CAUTIONPOINTSOPP,THIRDPERIODWIN,NEUTRALATTACKS,TIMESATTACKED,ATTACKSSTOPPED,STOPPOINTS,FIRSTBACKCENTER,LEGATTACK,LEGATTACKFINISH,EDGEFINISH,LATETDRECOVERY,LATETDHELD,LATETDRECOVERYOPP,LATETDHELDOPP,TEAMPOINTSDUAL,TEAMPOINTSTOURN,RIDINGTIME,RIDINGTIMEPT,RIDINGTIMEOPP,RIDINGTIMEPTOPP,DUAL,TOURNAMENT) = line.split('\t')
 		
 		# <-- NOTE: SPLITTING BY TABS DUE TO USE OF COMMAS IN NAME FIELDS, THIS MAY CHANGE --> #
 	
@@ -116,6 +119,7 @@ for line in fhand:
 	if WEEK == ' ': WEEK = 'null' 
 	if BOUT == ' ': BOUT = 'null' 
 	if OPPONENT == ' ': OPPONENT = 'null' 
+	if OPPONENTTEAM == ' ': OPPONENTTEAM = 'null'
 	if WEIGHTCLASS == ' ': WEIGHTCLASS = 'null' 
 	if FIRSTTAKEDOWN == ' ': FIRSTTAKEDOWN = 'null' 
 	if FIRSTTAKEDOWNOPP == ' ': FIRSTTAKEDOWNOPP = 'null' 
@@ -140,6 +144,8 @@ for line in fhand:
 	if TECHNICALFALLNONF == ' ': TECHNICALFALLNONF = 'null' 
 	if TECHINCALFALLNFOPP == ' ': TECHINCALFALLNFOPP = 'null' 
 	if TECHNICALFALLNONFOPP == ' ': TECHNICALFALLNONFOPP = 'null' 
+	if FORFEIT == ' ': FORFEIT = 'null'
+	if FORFEITOPP = ' ': FORFEITOPP = 'null'
 	if INJURYDEFAULT == ' ': INJURYDEFAULT = 'null' 
 	if INJURYDEFAULTOPP == ' ': INJURYDEFAULTOPP = 'null' 
 	if STALLWARNING == ' ': STALLWARNING = 'null' 
@@ -179,6 +185,7 @@ for line in fhand:
 	week[id] = WEEK
 	bout[id] = BOUT
 	opponent[id] = OPPONENT.strip('"')
+	opponentteam[id] = OPPONENTTEAM('"')
 	weightclass[id] = WEIGHTCLASS
 	firsttakedown[id] = FIRSTTAKEDOWN
 	firsttakedownopp[id] = FIRSTTAKEDOWNOPP
@@ -203,6 +210,8 @@ for line in fhand:
 	technicalfallnonf[id] = TECHNICALFALLNONF
 	techincalfallnfopp[id] = TECHINCALFALLNFOPP
 	technicalfallnonfopp[id] = TECHNICALFALLNONFOPP
+	forfeit[id] = FORFEIT
+	forfeitopp[id] = FORFEITOPP
 	injurydefault[id] = INJURYDEFAULT
 	injurydefaultopp[id] = INJURYDEFAULTOPP
 	stallwarning[id] = STALLWARNING
@@ -343,7 +352,7 @@ for id in idlist:
 		user_id = str(data[0])
 		
 		# And here's the SQL insert line from hell.  I hope I never have to write this again.
-		bout_add = "INSERT INTO bout (season_id, user_id, week, bout_num, bout_id, opponent, first_takedown, opp_first_takedown, takedowns, opp_takedowns, 2pt_nearfall, opp_2pt_nearfall, 3pt_nearfall, opp_3pt_nearfall, pins, opp_pins, escapes, opp_escapes, reversals, opp_reversals, win, decision, opp_decision, major_decision, opp_major_decision, tech_fall, opp_tech_fall, tech_fall_no, opp_tech_fall_no, injury_default, opp_injury_default, stall_warning, opp_stall_warning, stall_points, opp_stall_points, cautions, opp_cautions, caution_points, opp_caution_points, third_period_win, neutral_attacks, times_attacked, attacks_stopped, stop_points, first_back_center, leg_attack, leg_attack_finish, edge_finish, late_td_recovery, opp_late_td_recovery, late_td_held, opp_late_td_held, team_points_dual, team_points_tourn, riding_time, opp_riding_time, riding_time_pt, opp_riding_time_pt, `dual`, tournament) VALUES (" + season_id + ", " + user_id + ", " + week[id] + ", " + bout[id] + ", '" + id + " " + season + "', '" + opponent[id] + "', " + firsttakedown[id] + ", " + firsttakedownopp[id] + ", " + takedowns[id] + ", " + takedownsopp[id] + ", " + twopointnf[id] + ", " + twopointnfopp[id] + ", " + threepointnf[id] + ", " + threepointnfopp[id] + ", " + pin[id] + ", " + pinsopp[id] + ", " + escapes[id] + ", " + escapesopp[id] + ", " + reversals[id] + ", " + reversalsopp[id] + ", " + win[id] + ", " + decision[id] + ", " + decisionopp[id] + ", " + majordecision[id] + ", " + majordecisionopp[id] + ", " + technicalfallnf[id] + ", " + techincalfallnfopp[id] + ", " + technicalfallnonf[id] + ", " + technicalfallnonfopp[id] + ", " + injurydefault[id] + ", " + injurydefaultopp[id] + ", " + stallwarning[id] + ", " + stallwarningopp[id] + ", " + stallpoints[id] + ", " + stallpointsopp[id] + ", " + caution[id] + ", " + cautionopp[id] + ", " + cautionpoints[id] + ", " + cautionpointsopp[id] + ", " + thirdperiodwin[id] + ", " + neutralattacks[id] + ", " + timesattacked[id] + ", " + attacksstopped[id] + ", " + stoppoints[id] + ", " + firstbackcenter[id] + ", " + legattack[id] + ", " + legattackfinish[id] + ", " + edgefinish[id] + ", " + latetdrecovery[id] + ", " + latetdrecoveryopp[id] + ", " + latetdheld[id] + ", " + latetdheldopp[id] + ", " + teampointsdual[id] + ", " + teampointstourn[id] + ", " + ridingtime[id] + ", " + ridingtimeopp[id] + ", " + ridingtimept[id] + ", " + ridingtimeptopp[id] + ", " + dual[id] + ", " + tournament[id] + ")"
+		bout_add = "INSERT INTO bout (season_id, user_id, week, bout_num, bout_id, opponent, opponent_team, first_takedown, opp_first_takedown, takedowns, opp_takedowns, 2pt_nearfall, opp_2pt_nearfall, 3pt_nearfall, opp_3pt_nearfall, pins, opp_pins, escapes, opp_escapes, reversals, opp_reversals, win, decision, opp_decision, major_decision, opp_major_decision, tech_fall, opp_tech_fall, tech_fall_no, opp_tech_fall_no, forfeit, forfeit_opp, injury_default, opp_injury_default, stall_warning, opp_stall_warning, stall_points, opp_stall_points, cautions, opp_cautions, caution_points, opp_caution_points, third_period_win, neutral_attacks, times_attacked, attacks_stopped, stop_points, first_back_center, leg_attack, leg_attack_finish, edge_finish, late_td_recovery, opp_late_td_recovery, late_td_held, opp_late_td_held, team_points_dual, team_points_tourn, riding_time, opp_riding_time, riding_time_pt, opp_riding_time_pt, `dual`, tournament) VALUES (" + season_id + ", " + user_id + ", " + week[id] + ", " + bout[id] + ", '" + id + " " + season + "', '" + opponent[id] + "', " + firsttakedown[id] + ", " + firsttakedownopp[id] + ", " + takedowns[id] + ", " + takedownsopp[id] + ", " + twopointnf[id] + ", " + twopointnfopp[id] + ", " + threepointnf[id] + ", " + threepointnfopp[id] + ", " + pin[id] + ", " + pinsopp[id] + ", " + escapes[id] + ", " + escapesopp[id] + ", " + reversals[id] + ", " + reversalsopp[id] + ", " + win[id] + ", " + decision[id] + ", " + decisionopp[id] + ", " + majordecision[id] + ", " + majordecisionopp[id] + ", " + technicalfallnf[id] + ", " + techincalfallnfopp[id] + ", " + technicalfallnonf[id] + ", " + technicalfallnonfopp[id] + ", " + injurydefault[id] + ", " + injurydefaultopp[id] + ", " + stallwarning[id] + ", " + stallwarningopp[id] + ", " + stallpoints[id] + ", " + stallpointsopp[id] + ", " + caution[id] + ", " + cautionopp[id] + ", " + cautionpoints[id] + ", " + cautionpointsopp[id] + ", " + thirdperiodwin[id] + ", " + neutralattacks[id] + ", " + timesattacked[id] + ", " + attacksstopped[id] + ", " + stoppoints[id] + ", " + firstbackcenter[id] + ", " + legattack[id] + ", " + legattackfinish[id] + ", " + edgefinish[id] + ", " + latetdrecovery[id] + ", " + latetdrecoveryopp[id] + ", " + latetdheld[id] + ", " + latetdheldopp[id] + ", " + teampointsdual[id] + ", " + teampointstourn[id] + ", " + ridingtime[id] + ", " + ridingtimeopp[id] + ", " + ridingtimept[id] + ", " + ridingtimeptopp[id] + ", " + dual[id] + ", " + tournament[id] + ")"
 		cur.execute(bout_add)
 		cnx.commit()
 		print "Entry added!"
