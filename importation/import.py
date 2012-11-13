@@ -8,7 +8,7 @@ import datetime
 import string
 
 # First, connect to the database.
-cnx = mysql.connector.connect(user='admin', password='admin', host='127.0.0.1', database='mwrestling', use_unicode=False, buffered=True, get_warnings=True)
+cnx = mysql.connector.connect(user='admin', password='admin', host='localhost', database='mwrestling', use_unicode=False, buffered=True, get_warnings=True)
 
 # Then, set the cursor variable.
 cur = cnx.cursor()
