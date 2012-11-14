@@ -45,6 +45,7 @@ table {
     border-collapse: collapse;
     border: 2px solid #00319E;
     margin: auto;
+    margin-bottom: 10px;
 }
 
 th {
@@ -65,10 +66,9 @@ td {
     color: white;
     text-align: center;
     width: 90%;
-    position: fixed;
     bottom: -5px;
     margin-left: 5%;
+    padding-top: .1em;
+    padding-bottom: .1em;
     border-radius: 15px;
-
-    
 }

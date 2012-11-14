@@ -70,34 +70,130 @@
         echo("</td></tr>\n");
         $rank++;
     }
+    echo "</table>";
 
 ?>
-</table>
 <p></p>
+
 <table>
     <tr>
         <th>Rank</th>
         <th>Name</th>
-        <th>Record</th>
-        <th>Pins</th>
-        <th>Takedowns</th>
-        <th>Nearfalls</th>
-        <th>Stalls For</th>
-        <th>Stalls Against</th>
+        <th>Wins</th>
+        <th>Losses</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Dan Yates</td>
-        <td>15-2</td>
-        <td>7</td>
-        <td>32</td>
-        <td>12</td>
-        <td>8</td>
-        <td>0</td>
-    </tr>
-</table>
-
-</div>
-
+<?php
+    //query to get record
+    $win_query = mysql_query("SELECT user.firstname, user.lastname, user.id, bout.bout_id FROM user, bout WHERE user.id = bout.user_id AND bout.win=1");
+    
+    $loss_query = mysql_query("SELECT user.firstname, user.lastname, user.id, bout.bout_id FROM user, bout WHERE user.id = bout.user_id AND bout.win=0");
+    
+    $wins = array();
+    $win_names = array();
+    while ( $win_wrestler = mysql_fetch_row($win_query) ) {
+        if (array_key_exists($win_wrestler[2], $wins)) {
+            $wins[$win_wrestler[2]]++;
+        }
+        else {
+            $wrestler_name = $win_wrestler[0] . " " . $win_wrestler[1];
+            $win_names[$win_wrestler[2]] = $wrestler_name;
+            $wins[$win_wrestler[2]] = 1;
+        }
+    }
+    
+    $losses = array();
+    $loss_names = array();
+    while ( $loss_wrestler = mysql_fetch_row($loss_query) ) {
+        if (array_key_exists($loss_wrestler[2], $losses)) {
+            $losses[$loss_wrestler[2]]++;
+        }
+        else {
+            $wrestler_name = $loss_wrestler[0] . " " . $loss_wrestler[1];
+            $loss_names[$loss_wrestler[2]] = $wrestler_name;
+            $losses[$loss_wrestler[2]] = 1;
+        }
+    }
+    
+    $win_table = array();
+    foreach ($wins as $i => $nums) {
+        foreach($win_names as $j => $value) {
+            if ($i == $j) {
+                $win_table[$value]=$nums;
+            }
+        }
+    }
+    
+    $loss_table = array();
+    foreach ($losses as $i => $nums) {
+        foreach($loss_names as $j => $value) {
+            if ($i == $j) {
+                $loss_table[$value]=$nums;
+            }
+        }
+    }
+    
+    
+    arsort($win_table);
+    asort($loss_table);
+    $rank = 1;
+    foreach ($win_table as $i => $wins) {
+        if (!array_key_exists($i, $loss_table)) {
+            echo ("<tr><td>");
+            echo $rank;
+            echo("</td><td>");
+            echo $i;
+            echo("</td><td>");
+            echo $wins;
+            echo("</td><td>");
+            echo '0';
+            echo("</td></tr>\n");
+            $rank++;
+            continue;
+        }
+    }
+    
+    foreach ($win_table as $i => $wins) {
+        if (array_key_exists($i, $loss_table)) {
+            foreach($loss_table as $j => $losses) {
+                if ($i == $j) {
+                    echo ("<tr><td>");
+                    echo $rank;
+                    echo("</td><td>");
+                    echo $i;
+                    echo("</td><td>");
+                    echo $wins;
+                    echo("</td><td>");
+                    echo $losses;
+                    echo("</td></tr>\n");
+                    $rank++;
+                    continue;
+                } 
+            }
+        }
+    }
+    
+    
+    foreach ($loss_table as $j => $losses) {
+        if (!array_key_exists($j, $win_table)) {
+            echo ("<tr><td>");
+            echo $rank;
+            echo("</td><td>");
+            echo $j;
+            echo("</td><td>");
+            echo "0";
+            echo("</td><td>");
+            echo $losses;
+            echo("</td></tr>\n");
+            $rank++;
+            continue;
+        }
+    }
+    
+    
+    echo "</table>";
+    echo "<p></p>";
+    echo "</div>";
+    
+?>
 
 <?php endblock() ?>
