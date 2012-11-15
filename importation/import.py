@@ -1,11 +1,7 @@
-###	File:		UMich Men's Wrestling Importation Script	###
-###	Version:	v1.1										###
-###	Author: 	Chad Kijewski								###
-###	Updated:	11/8/2012									###
-
 import mysql.connector
 import datetime
 import string
+import re
 
 # First, connect to the database.
 cnx = mysql.connector.connect(user='admin', password='admin', host='localhost', database='mwrestling', use_unicode=False, buffered=True, get_warnings=True)
@@ -169,6 +165,7 @@ for line in fhand:
 	if RIDINGTIMEOPP == ' ': RIDINGTIMEOPP = 'null'
 	if RIDINGTIMEPTOPP == ' ': RIDINGTIMEPTOPP = 'null'
 	if DUAL == ' ': DUAL = 'null'
+	TOURNAMENT = re.sub("\s+", "", TOURNAMENT)
 	if TOURNAMENT != '1' and TOURNAMENT != '0': TOURNAMENT = 'null'
 	
 	OPPONENT = string.replace(OPPONENT, ' ', ', ')
