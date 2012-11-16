@@ -41,12 +41,14 @@ body {
     text-align: center;
 }
 
+
 table {
     border-collapse: collapse;
     border: 2px solid #00319E;
     margin: auto;
     margin-bottom: 10px;
 }
+
 
 th {
     text-align: center;
@@ -72,3 +74,12 @@ td {
     padding-bottom: .1em;
     border-radius: 15px;
 }
+
+/* Sortable tables */ 
+table.sortable thead { 
+    background-color:#eee; 
+    color:#666666; 
+    font-weight: bold; 
+    cursor: default; 
+}
+
