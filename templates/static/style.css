@@ -47,13 +47,17 @@ table {
     border: 2px solid #00319E;
     margin: auto;
     margin-bottom: 10px;
+    background-color: white; 
+    #color:#666666; 
+    font-weight: bold; 
+    cursor: default; 
 }
 
 
 th {
     text-align: center;
     border: 2px solid #00319E;
-    background: gray;
+    background: #00319E;
     color: white;
     padding: .2em;
 }
@@ -75,11 +79,25 @@ td {
     border-radius: 15px;
 }
 
-/* Sortable tables */ 
-table .sortable thead { 
-    background-color:#eee; 
-    color:#666666; 
-    font-weight: bold; 
-    cursor: default; 
+#statsbar {
+    background: #00319E;
+    color: white;
+    padding: .2em;
+    border-radius: 15px;
+    border-color: #FFFB4C;
+    border-width: 5px;
+    margin-bottom: 10px;
+    border-style: solid;
+    padding: .2em;
+}
+
+#statsbar a {
+    color: white;
+    text-decoration: bold;
+}
+
+.selected {
+    background: #00319E;
+    color: white;
 }
 
