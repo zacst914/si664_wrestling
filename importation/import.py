@@ -79,6 +79,10 @@ tournament = {}
 idlist = []
 classlist = ['125 lbs', '133 lbs', '141 lbs', '149 lbs', '157 lbs', '165 lbs', '174 lbs', '184 lbs', '197 lbs', '285 lbs']
 
+usercount = 0
+classcount = 0
+boutcount = 0
+
 # Open the data source file.
 fhand = open('wdata.csv', 'rb')
 
@@ -251,10 +255,8 @@ except:
 	# Add an entry for the season to database.  This should only fire off once a year in the fall.
 	for entry in classlist:
 		addition = "INSERT INTO class (`class`) VALUES ('" + entry + "')"
-		print addition
 		cur.execute(addition)
 		cnx.commit()
-		print "New weight class added: " + entry	
 
 # Check for each individual wrestler in the database and add or update his information.
 for id, value in sorted(uniqname.iteritems(), key=lambda (k,v): (v,k), reverse=True):
@@ -292,7 +294,7 @@ for id, value in sorted(uniqname.iteritems(), key=lambda (k,v): (v,k), reverse=T
 			update = "UPDATE user SET class_id = " + str(wclass) + " WHERE username = '" + value + "'"
 			cur.execute(update)
 			cnx.commit()
-			print "Weight class updated for user  '" + value + "'!"
+			classcount = classcount + 1
 			
 	except:
 	
@@ -300,7 +302,7 @@ for id, value in sorted(uniqname.iteritems(), key=lambda (k,v): (v,k), reverse=T
 		addition = "INSERT INTO user (firstname, lastname, uniqname, password, email, class_id) VALUES ('" + firstname[id] + "', '" + lastname[id] + "', '" + value + "', 'PASSw0rd123', '" + value + "@umich.edu', " + str(wclass) + ")"
 		cur.execute(addition)
 		cnx.commit()
-		print "User " + value + " added to database!"
+		usercount = usercount + 1
 
 # Set a variable for the current time and determine what season it is.
 now = datetime.datetime.now()
@@ -337,7 +339,6 @@ except:
 	cur.execute(select)
 	data = cur.fetchone()
 	season_id = str(data[0])
-	print "New season added: " + season
 	
 # Import the bout information into the 'bout' table and assign it to the appropriate wrestler
 for id in idlist:
@@ -351,7 +352,6 @@ for id in idlist:
 		# Again, try to iterate the returned value; if this succeeds it's a tuple and this bout has already been recorded.
 		# If it fails, it's a NoneType.  Go to the below 'except'.
 		for entry in data: continue
-		print "Entry exists!"
 	
 	except:
 	
@@ -366,8 +366,14 @@ for id in idlist:
 		bout_add = 'INSERT INTO bout (user_id, season_id, week, bout, bout_id, opponent, opponentteam, weightclass, firsttakedown, firsttakedownopp, takedowns, takedownsopp, twopointnf, twopointnfopp, threepointnf, threepointnfopp, pin, pinsopp, escapes, escapesopp, reversals, reversalsopp, win, decision, decisionopp, majordecision, majordecisionopp, technicalfallnf, technicalfallnonf, technicalfallnfopp, technicalfallnonfopp, forfeit, forfeitopp, injurydefault, injurydefaultopp, stallwarning, stallwarningopp, stallpoints, stallpointsopp, caution, cautionopp, cautionpoints, cautionpointsopp, thirdperiodwin, neutralattacks, timesattacked, attacksstopped, stoppoints, firstbackcenter, legattack, legattackfinish, edgefinish, latetdrecovery, latetdheld, latetdrecoveryopp, latetdheldopp, teampointsdual, teampointstourn, ridingtime, ridingtimept, ridingtimeopp, ridingtimeptopp, `dual`, tournament) VALUES (%s, %s, %s, %s, "%s", "%s", "%s", %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)' % (user_id, season_id, week[id], bout[id], id + " " + season, opponent[id], opponentteam[id], weightclass[id], firsttakedown[id], firsttakedownopp[id], takedowns[id], takedownsopp[id], twopointnf[id], twopointnfopp[id], threepointnf[id], threepointnfopp[id], pin[id], pinsopp[id], escapes[id], escapesopp[id], reversals[id], reversalsopp[id], win[id], decision[id], decisionopp[id], majordecision[id], majordecisionopp[id], technicalfallnf[id], technicalfallnonf[id], technicalfallnfopp[id], technicalfallnonfopp[id], forfeit[id], forfeitopp[id], injurydefault[id], injurydefaultopp[id], stallwarning[id], stallwarningopp[id], stallpoints[id], stallpointsopp[id], caution[id], cautionopp[id], cautionpoints[id], cautionpointsopp[id], thirdperiodwin[id], neutralattacks[id], timesattacked[id], attacksstopped[id], stoppoints[id], firstbackcenter[id], legattack[id], legattackfinish[id], edgefinish[id], latetdrecovery[id], latetdheld[id], latetdrecoveryopp[id], latetdheldopp[id], teampointsdual[id], teampointstourn[id], ridingtime[id], ridingtimept[id], ridingtimeopp[id], ridingtimeptopp[id], dual[id], tournament[id])
 		cur.execute(bout_add)
 		cnx.commit()
-		print "Entry added!"
+		boutcount = boutcount + 1
 		
 	# Close both the cursor and database connection.
 cur.close()
 cnx.close()
+
+print '<b><font size="6">Upload Successful!</font></b><p>'
+print '<table>'
+print '<tr><td><b>New Users:</b></td><td>'+ str(usercount) + '</td></tr>'
+print '<tr><td><b>Users Updated:</b></td><td>' + str(classcount) + '</td></tr>'
+print '<tr><td><b>Bouts Added:</b></td><td>' + str(boutcount) + '</td></tr></table><br>'
