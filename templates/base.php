@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="static/style.css">
     <script src="static/sorttable.js"></script>
-    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="static/jquery.min.js"></script>
     <meta http-equiv="content-type" content="text/html">
     <?php startblock('title') ?>
         <title>Replace</title>

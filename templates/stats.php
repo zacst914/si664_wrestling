@@ -33,9 +33,12 @@ function print_penalties_table() {
 
 
 function print_team_table() {
-    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions', 'Pins', 'Techfalls', '4pt Techfalls', 'Majors', 'Decisions'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins', 'techfall', 'techfall4pt', 'majors', 'decisions', 'pins_opp', 'techfall_opp', 'techfall4pt_opp', 'majors_opp', 'decisions_opp'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
+    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions', 'Total'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins', 'techfall', 'techfall4pt', 'majors', 'decisions'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
 }
 
+function print_opp_team_table() {
+    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions', 'Total'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins_opp', 'techfall_opp', 'techfall4pt_opp', 'majors_opp', 'decisions_opp'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
+}
 
 </script>
 
@@ -46,6 +49,7 @@ function print_team_table() {
         <a href="#" onclick="print_top_table();">Top</a>
         <a href="#" onclick="print_bottom_table();">Bottom</a>
         <a href="#" onclick="print_team_table();">Team Scoring</a>
+        <a href="#" onclick="print_opp_team_table();">Opponent Team Scoring</a>
         <a href="#" onclick="print_penalties_table();">Penalties</a>
     </div>
 
