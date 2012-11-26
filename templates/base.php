@@ -19,7 +19,7 @@
             <a href="index.php">Home</a> | 
             <a href="stats.php">Statistics</a> | 
             <a href="ann.php">Announcements</a> |
-            <a href="loginscreen.php">Log In</a>
+            <a href="main_login.php">Log In</a>
             </h3>
         </div>
     </div>
