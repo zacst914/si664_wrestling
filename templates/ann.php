@@ -1,4 +1,4 @@
-<?php include 'base.php' ?>
+<?php include 'base_loggedin.php' ?>
 
 <?php startblock ('title') ?>
 <title>Announcements</title>

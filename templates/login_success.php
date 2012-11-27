@@ -5,12 +5,7 @@ if(!isset($_SESSION['username'])) {
 	return;
 }
 else {
-	
+	header("location:index_loggedin.php");
+	return;
 }
-
 ?>
-<html>
-<body>
-Login Successful
-</body>
-</html>
