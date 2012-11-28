@@ -37,8 +37,10 @@ header( 'location: login_success.php' );
 return;
 }
 
-else {
-echo "Wrong Username or Password";
-return;
+else
+{
+	$_SESSION['error'] = "Wrong Username or Password!";
+	header( 'Location: main_login.php' ) ;
+	return;
 }
 ?>

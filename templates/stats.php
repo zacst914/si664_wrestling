@@ -1,4 +1,4 @@
-<?php include 'base_loggedin.php' ?>
+<?php include 'base.php' ?>
 <?php 
     require_once "print.php";
 ?>
@@ -9,7 +9,7 @@
 <?php endblock() ?>
 
 <?php startblock ('content') ?>
-
+<div id="tables">
 <script type="text/javascript">
 function print_overall_table() {
     document.getElementById('stats_table').innerHTML = "<?php $match_header = array('Rank', 'Lastname', 'Firstname', 'Wins', 'Losses', 'Pins', 'Takedowns', '3pt Nearfalls', '2pt Nearfalls', 'Stalls For','Stalls Against'); print_header($match_header); $cat_arr = array('lastname', 'firstname', 'wins', 'losses', 'pins', 'takedowns','nearfall3pt', 'nearfall2pt', 'stalls_opp', 'stalls'); usort($wrestler_array, 'rank'); print_table($cat_arr, $wrestler_array); ?>";
@@ -58,6 +58,6 @@ function print_opp_team_table() {
         <script type="text/javascript">print_overall_table();</script>
     
     </div>
-
+</div>
 
 <?php endblock() ?>

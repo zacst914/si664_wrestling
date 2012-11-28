@@ -5,7 +5,7 @@ if(!isset($_SESSION['username'])) {
 	return;
 }
 else {
-	header("location:index_loggedin.php");
+	header("location:announcements.php");
 	return;
 }
 ?>
