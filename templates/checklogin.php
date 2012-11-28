@@ -3,8 +3,8 @@ session_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
 $password="root"; // Mysql password
-$db_name="login"; // Database name
-$tbl_name="members"; // Table name
+$db_name="mwrestling"; // Database name
+$tbl_name="user"; // Table name
 
 // Connect to server and select databse.
 mysql_connect("$host", "$username", "$password")or die("cannot connect");
@@ -20,7 +20,7 @@ $mypassword = stripslashes($mypassword);
 $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
 
-$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
+$sql="SELECT * FROM $tbl_name WHERE uniqname='$myusername' and password='$mypassword'";
 $result=mysql_query($sql);
 
 // Mysql_num_row is counting table row
