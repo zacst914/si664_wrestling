@@ -208,8 +208,6 @@ for id in idlist:
 cur.close()
 cnx.close()
 
-print '<b><font size="6">Upload Successful!</font></b><p>'
-print '<table>'
-print '<tr><td><b>New Users:</b></td><td>'+ str(usercount) + '</td></tr>'
-print '<tr><td><b>Users Updated:</b></td><td>' + str(classcount) + '</td></tr>'
-print '<tr><td><b>Bouts Added:</b></td><td>' + str(boutcount) + '</td></tr></table><br>'
+print usercount
+print classcount
+print boutcount
