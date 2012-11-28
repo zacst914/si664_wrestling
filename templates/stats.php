@@ -1,4 +1,4 @@
-<?php include 'base.php' ?>
+<?php include 'base_loggedin.php' ?>
 <?php 
     require_once "print.php";
 ?>
