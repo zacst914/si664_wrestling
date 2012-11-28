@@ -81,10 +81,10 @@ except:
 	# Add an entry for the season to database.  This should only fire off once a year in the fall.
 	for entry in classlist:
 		addition = "INSERT INTO class (`class`) VALUES ('" + entry + "')"
-		print addition
+		#print addition
 		cur.execute(addition)
 		cnx.commit()
-		print "New weight class added: " + entry	
+		#print "New weight class added: " + entry	
 
 # Check for each individual wrestler in the database and add or update his information.
 for id, value in sorted(dicts['uniqname'].iteritems(), key=lambda (k,v): (v,k), reverse=True):
