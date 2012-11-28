@@ -9,7 +9,7 @@
 	{
 		if(move_uploaded_file($_FILES['userfile']['tmp_name'], $path))
 			{
-			$command = "python import.py";
+			$command = "python import3.py";
 			
 			exec($command, $output);
 			

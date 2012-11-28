@@ -42,15 +42,16 @@ function print_opp_team_table() {
 
 </script>
 
-<h1>Statistics</h1>
     <div id="statsbar">
-        <a href="#" onclick="print_overall_table();">Overall</a>
-        <a href="#" onclick="print_takedown_table();">Takedowns</a>
-        <a href="#" onclick="print_top_table();">Top</a>
-        <a href="#" onclick="print_bottom_table();">Bottom</a>
-        <a href="#" onclick="print_team_table();">Team Scoring</a>
-        <a href="#" onclick="print_opp_team_table();">Opponent Team Scoring</a>
-        <a href="#" onclick="print_penalties_table();">Penalties</a>
+    <ul>
+        <li><a href="#" onclick="print_overall_table();">Overall</a></li>
+        <li><a href="#" onclick="print_takedown_table();">Takedowns</a></li>
+        <li><a href="#" onclick="print_top_table();">Top</a></li>
+        <li><a href="#" onclick="print_bottom_table();">Bottom</a></li>
+        <li><a href="#" onclick="print_team_table();">Team Scoring</a></li>
+        <li><a href="#" onclick="print_opp_team_table();">Opponent Team Scoring</a></li>
+        <li><a href="#" onclick="print_penalties_table();">Penalties</a></li>
+    </ul>
     </div>
 
     <div id="stats_table">

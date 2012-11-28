@@ -124,8 +124,8 @@ body
     border: 2px solid #00319E;
     margin: auto;
     margin-bottom: 10px;
+    margin-top: 10px;
     background-color: white; 
-    #color:#666666; 
     font-weight: bold; 
     cursor: default; 
 }
@@ -174,21 +174,30 @@ body
 
 #statsbar
 {
-    background: #00319E;
-    color: white;
+    float: left;
+    width: 12%;
+    line-height: 30px;
     padding: .2em;
-    border-radius: 15px;
-    border-color: #FFFB4C;
-    border-width: 5px;
     margin-bottom: 10px;
-    border-style: solid;
-    padding: .2em;
+}
+
+#statsbar ul 
+{
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0; 
 }
 
 #statsbar a
 {
-    color: white;
-    text-decoration: bold;
+    color: #00319E;
+    text-decoration: none;
+}
+
+#statsbar a:hover
+{
+    color: #3281A7;
+    font-weight: 750;
 }
 
 .selected
