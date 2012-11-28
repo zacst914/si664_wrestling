@@ -33,11 +33,11 @@ function print_penalties_table() {
 
 
 function print_team_table() {
-    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions', 'Total'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins', 'techfall', 'techfall4pt', 'majors', 'decisions'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
+    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins', 'techfall', 'techfall4pt', 'majors', 'decisions'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
 }
 
 function print_opp_team_table() {
-    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions', 'Total'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins_opp', 'techfall_opp', 'techfall4pt_opp', 'majors_opp', 'decisions_opp'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
+    document.getElementById('stats_table').innerHTML = "<?php $team_header = array('Rank', 'Lastname', 'Firstname','Pins', 'Tech Falls', '4 Pt Tech Fall', 'Majors', 'Decisions'); print_header($team_header); $cat_arr = array('lastname', 'firstname', 'pins_opp', 'techfall_opp', 'techfall4pt_opp', 'majors_opp', 'decisions_opp'); usort($wrestler_array, 'cmp_team'); print_table($cat_arr, $wrestler_array); ?>";
 }
 
 </script>
