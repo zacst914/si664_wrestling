@@ -1,54 +1,125 @@
-body {
-    font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+body
+{
+	background-image: url('/mwrestling/images/background.jpg');
+	background-repeat: repeat-x;
+	background-color: #3B608D;
+	
+    font-family: 'Arial', 'Book Antiqua', Serif;
+	
+	margin: 0;
+	padding: 0;
+	
+	width: 70%;
+	margin-left: 15%;
 }
 
-#header {
-    background: #00319E;
-    color: white;
-    margin: 0 auto;
-    padding: .2em;
-    width: 90%;
-    border-radius: 15px;
+#wrapper
+{
+	
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	background-color: #DDDDDD;
+	min-height: 75%;
 }
 
-#login {
-    padding: .2em;
-    padding: 15px 15px 25px 55px; 
-
+#header
+{
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	background-color: #F5F5F5;
 }
 
-#nav {
-    background: #FFFB4C;
-    color: #00319E;
-    padding: .2em;
-    border-radius: 15px;
-
+#banner
+{
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	background-image: url('/mwrestling/images/header-bg.png');
+	background-repeat: repeat-x;
 }
 
-#nav a {
+#nav 
+{
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;	
+	
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	min-height: 30px;
+	
+	background: transparent;
+	font-variant: small-caps;
+	font-size: 20px;
+	text-shadow: black 0px 1px 0px;
+	text-align: right;
+}
+
+
+#nav a
+{
     color: #00319E;
     text-decoration: none;
 }
 
-#nav a:visited {
-    text-decoration: underline;
-}
-
-#nav a:hover {
-    color: black;
+#nav a:hover
+{
+    color: #3281A7;
     font-weight: 750;
 }
 
-#content {
-    width:90%;
+#content
+{
     margin: 0 auto;
     margin-top: 15px;
     padding: 10px 10px;
     text-align: center;
 }
 
+#login table
+{
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 1px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 1px;	
+	box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 1px;
+}
 
-table {
+#tables table
+{
     border-collapse: collapse;
     border: 2px solid #00319E;
     margin: auto;
@@ -60,7 +131,8 @@ table {
 }
 
 
-th {
+#tables th
+{
     text-align: center;
     border: 2px solid #00319E;
     background: #00319E;
@@ -68,24 +140,40 @@ th {
     padding: .2em;
 }
 
-td {
+#tables td
+{
     border: 2px solid #00319E;
     padding: .2em;
 }
 
-#footer {
-    background: #00319E;
-    color: white;
-    text-align: center;
-    width: 90%;
-    bottom: -5px;
-    margin-left: 5%;
-    padding-top: .1em;
-    padding-bottom: .1em;
-    border-radius: 15px;
+#footer
+{
+	background-color: #DDDDDD;
+	
+    margin-top: 20px;
+    margin-bottom: 20px;
+	
+	padding-top: 10px;
+	padding-bottom: 0px;
+	
+	-moz-border-radius: 6px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	-webkit-border-radius: 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	border-radius: 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	
+	color: #005596;
+	font-size: 13px;
+	text-align: right;
+	text-shadow: gray 1px 1px 0px;
+	min-height: 30px;
 }
 
-#statsbar {
+#statsbar
+{
     background: #00319E;
     color: white;
     padding: .2em;
@@ -97,13 +185,20 @@ td {
     padding: .2em;
 }
 
-#statsbar a {
+#statsbar a
+{
     color: white;
     text-decoration: bold;
 }
 
-.selected {
+.selected
+{
     background: #00319E;
-    color: white;
+	color: white;
 }
 
+#upload
+{
+	text-indent: 50px;
+	font-size: 15px;
+}

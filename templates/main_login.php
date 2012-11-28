@@ -1,3 +1,12 @@
+<?php include 'base_loggedout.php' ?>
+
+<?php startblock ('title') ?>
+    <title>Log In</title>
+<?php endblock() ?>
+
+<?php startblock ('content') ?>
+<div id="login">
+<p>
 <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
 <form name="form1" method="post" action="checklogin.php">
@@ -26,3 +35,16 @@
 </form>
 </tr>
 </table>
+</div>
+</p>
+<?php
+
+session_start();
+
+if ( isset($_SESSION['error']) ) 
+	{
+		echo '<b><p style="color:red; text-align:center;">'.$_SESSION['error']."</p></b>\n";
+		unset($_SESSION['error']);
+	}
+?>
+<?php endblock() ?>

@@ -21,24 +21,12 @@
 			</div>
 			<div id="nav">
 				<span style="margin-right: 15px;">
-					<a href="/mwrestling/announcements.php">
-					announcements
+					<a href="/mwrestling/index.php">
+					home
 					</a>
 					|
-					<a href="/mwrestling/stats.php">
-					leaderboards
-					</a>
-					|
-					<a href="/mwrestling/upload.php">
-					upload
-					</a>
-					|
-					<a href="/mwrestling/myaccount.php">
-					my account
-					</a>
-					|
-					<a href="/mwrestling/logout.php">
-					log out
+					<a href="/mwrestling/main_login.php">
+					log in
 					</a>
 				</span>
 			</div>
