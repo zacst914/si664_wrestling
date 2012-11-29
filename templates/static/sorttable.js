@@ -38,6 +38,14 @@ sorttable = {
     });
 
   },
+  
+  reinit: function() {
+    forEach(document.getElementsByTagName('table'), function(table) {
+      if (table.className.search(/\bsortable\b/) != -1) {
+        sorttable.makeSortable(table);
+      }
+    });
+  },
 
   makeSortable: function(table) {
     if (table.getElementsByTagName('thead').length == 0) {
