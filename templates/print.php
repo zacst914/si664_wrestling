@@ -81,6 +81,16 @@
             return $this->wins/($this->wins+$this->losses);
         }
         
+        function get_teampts() {
+            return ($this->pins*6+$this->techfall*5+$this->techfall4pt*4+
+                    $this->majors*4+$this->decisions*3);
+        }
+        
+        function get_teampts_opp() {
+            return ($this->pins_opp*6+$this->techfall_opp*5+$this->techfall4pt_opp*4
+                    +$this->majors_opp*4+$this->decisions_opp*3);
+        }
+        
         function print_wrestler() {
             echo "<p>id: ";
             echo ($this->id);
@@ -175,30 +185,39 @@
     }
     
     function cmp_team($a, $b) {
-        if ($a->pins == $b->pins) { 
-            if ($a->techfall == $b->techfall) {
-                if ($a->techfall4pt == $b->techfall4pt) {
-                    if ($a->majors == $b->majors) {
-                        if ($a->decisions == $b->decisions) {
-                            if ($a->pins_opp == $b->pins_opp) {
-                                if ($a->techfall_opp == $b->techfall_opp) {
-                                    if ($a->techfall4pt_opp == $b->techfall4pt_opp) {
-                                        if ($a->majors_opp == $b->majors_opp) {
-                                            if ($a->decisions_opp == $b->decisions_opp) {
-                                                return 0;
-                                            } return ($a->decisions_opp > $b->decisions_opp) ? 1 : -1;
-                                        } return ($a->majors_opp > $b->majors_opp) ? 1 : -1;
-                                    } return ($a->techfall4pt_opp > $b->techfall4pt_opp) ? 1 : -1;
-                                } return ($a->techfall_opp > $b->techfall_opp) ? 1 : -1;
-                            } return ($a->pins_opp > $b->pins_opp) ? 1 : -1;
-                        } return ($a->decisions < $b->decisions) ? 1 : -1;
-                    } return ($a->majors < $b->majors) ? 1 : -1;
-                } return ($a->techfall4pt < $b->techfall4pt) ? 1 : -1;
-            } return ($a->techfall < $b->techfall) ? 1 : -1;
-        } return ($a->pins < $b->pins) ? 1 : -1;
+        if ($a->get_teampts() == $b->get_teampts()) {
+            if ($a->pins == $b->pins) { 
+                if ($a->techfall == $b->techfall) {
+                    if ($a->techfall4pt == $b->techfall4pt) {
+                        if ($a->majors == $b->majors) {
+                            if ($a->decisions == $b->decisions) {
+                                return 0;
+                            } return ($a->decisions < $b->decisions) ? 1 : -1;
+                        } return ($a->majors < $b->majors) ? 1 : -1;
+                    } return ($a->techfall4pt < $b->techfall4pt) ? 1 : -1;
+                } return ($a->techfall < $b->techfall) ? 1 : -1;
+            } return ($a->pins < $b->pins) ? 1 : -1;
+        } return ($a->get_teampts() < $b->get_teampts()) ? 1 : -1;
+    }
+                   
+    function cmp_team_opp($a, $b) {
+        if ($a->get_teampts_opp() == $b->get_teampts_opp()) {
+            if ($a->pins_opp == $b->pins_opp) {
+                if ($a->techfall_opp == $b->techfall_opp) {
+                    if ($a->techfall4pt_opp == $b->techfall4pt_opp) {
+                        if ($a->majors_opp == $b->majors_opp) {
+                            if ($a->decisions_opp == $b->decisions_opp) {
+                                return 0;
+                            } return ($a->decisions_opp > $b->decisions_opp) ? 1 : -1;
+                        } return ($a->majors_opp > $b->majors_opp) ? 1 : -1;
+                    } return ($a->techfall4pt_opp > $b->techfall4pt_opp) ? 1 : -1;
+                } return ($a->techfall_opp > $b->techfall_opp) ? 1 : -1;
+            } return ($a->pins_opp > $b->pins_opp) ? 1 : -1;
+        } return ($a->get_teampts_opp() > $b->get_teampts_opp()) ? 1 : -1;
     }
     
-    function print_header($arr) {
+    function print_header($arr, $table_name) {
+        echo "<h2 style='text-align:center;'>$table_name</h2>";
         $str = "<table class='sortable'><tr>";
         echo $str;
         foreach ($arr as $key => $value) {
@@ -213,6 +232,17 @@
         foreach ($wrest_arr as $j => $value) {
             echo "<td>$rank</td>";
             foreach ($arr as $i => $cat) {
+                if ($cat == 'get_teampts') {
+                    $cat = $value->get_teampts();
+                    echo "<td>" . $cat . "</td>";
+                    continue;
+                }
+                if ($cat == 'get_teampts_opp') {
+                    $cat = $value->get_teampts_opp();
+                    echo "<td>" . $cat . "</td>";
+                    continue;
+                }
+
                 echo "<td>" . $value->$cat . "</td>";
             }
             echo "</tr>";

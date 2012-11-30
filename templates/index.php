@@ -6,4 +6,4 @@
 
 
 
-<?php include 'loggedout_footer.php' ?>
+<?php include 'footer.php' ?>

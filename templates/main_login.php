@@ -9,6 +9,7 @@
         $row = mysql_fetch_row($result);	
         if ( $row === FALSE ) {
             unset($_SESSION['username']);
+            $_SESSION['error'] = 'Wrong username or password';
         } else { 
             $_SESSION['username'] = $row[0];
             $_SESSION['acct_type'] = $row[1];
@@ -37,5 +38,10 @@
 </form>
 
 </div>
-
-<?php include 'loggedout_footer.php' ?>
+<?php
+if ( isset($_SESSION['error']) ) {
+    echo '<p style="color:red; text-align:center;">'.$_SESSION['error']."</p>\n";
+    unset($_SESSION['error']);
+}
+?>
+<?php include 'footer.php' ?>
