@@ -1,9 +1,14 @@
-<?php include 'base_loggedout.php' ?>
+<?php 
+    session_start();
+    include 'loggedout_header.php' 
+?>
 
-<?php startblock ('title') ?>
-    <title>Home Page</title>
-<?php endblock() ?>
+<?php
+    if ( isset($_SESSION['error']) ) {
+        echo '<p style="color:red">'.$_SESSION['error']."</p>\n";
+        unset($_SESSION['error']);
+    }
+?>
 
-<?php startblock ('content') ?>
-    
-<?php endblock() ?>
+
+<?php include 'loggedout_footer.php' ?>

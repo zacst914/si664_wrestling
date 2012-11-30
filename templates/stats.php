@@ -1,14 +1,11 @@
-<?php include 'base.php' ?>
+<?php include "header.php" ?>
 <?php 
     require_once "print.php";
 ?>
 
 
-<?php startblock ('title') ?>
-<title>Statistics</title>
-<?php endblock() ?>
 
-<?php startblock ('content') ?>
+
 <div id="tables">
 <script type="text/javascript">
 function print_overall_table() {
@@ -71,4 +68,4 @@ function print_opp_team_table() {
     </div>
 </div>
 
-<?php endblock() ?>
+<?php include "footer.php" ?>

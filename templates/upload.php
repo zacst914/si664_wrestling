@@ -1,16 +1,13 @@
-<?php include 'base.php' ?>
+<?php include "header.php" ?>
 
-<?php startblock ('title') ?>
-<title>MWrestling - Upload</title>
-<?php endblock() ?>
 
-<?php startblock ('content') ?>
+
 
 	<div id="upload">
 	
 	<?php
 	
-	session_start();
+	//session_start();
 		
 	if ( isset($_SESSION['error']) ) 
 	{
@@ -43,4 +40,5 @@
 	</p>
 	</form>
 	</div>
-<?php endblock() ?>
+
+<?php include "footer.php" ?>

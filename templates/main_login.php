@@ -1,50 +1,38 @@
-<?php include 'base_loggedout.php' ?>
-
-<?php startblock ('title') ?>
-    <title>Log In</title>
-<?php endblock() ?>
-
-<?php startblock ('content') ?>
-<div id="login">
-<p>
-<table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
-<tr>
-<form name="form1" method="post" action="checklogin.php">
-<td>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-<tr>
-<td colspan="3"><strong>Member Login </strong></td>
-</tr>
-<tr>
-<td width="78">Username</td>
-<td width="6"></td>
-<td width="294"><input name="myusername" type="text" id="myusername"></td>
-</tr>
-<tr>
-<td>Password</td>
-<td></td>
-<td><input name="mypassword" type="password" id="mypassword"></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input type="submit" name="Submit" value="Login"></td>
-</tr>
-</table>
-</td>
-</form>
-</tr>
-</table>
-</div>
-</p>
+<?php include 'db.php'?>
 <?php
-
-session_start();
-
-if ( isset($_SESSION['error']) ) 
-	{
-		echo '<b><p style="color:red; text-align:center;">'.$_SESSION['error']."</p></b>\n";
-		unset($_SESSION['error']);
-	}
+    session_start();
+    if ( isset($_POST['username']) && isset($_POST['password'])  ) {
+        $u = mysql_real_escape_string($_POST['username']);
+        $p = mysql_real_escape_string($_POST['password']);
+        $sql = "SELECT uniqname FROM user WHERE uniqname='$u' AND password='$p'";
+        $result = mysql_query($sql);
+        $row = mysql_fetch_row($result);	
+        if ( $row === FALSE ) {
+            unset($_SESSION['username']);
+        } else { 
+            $_SESSION['username'] = $row[0];
+        }
+    }
+    if ( isset($_SESSION['username']) ) {
+        header( "Location: announcements.php"); 
+        return;
+    }
 ?>
-<?php endblock() ?>
+
+<?php include 'loggedout_header.php' ?>
+
+<div id="login">
+
+
+<form method="post">
+<h3>Member Login</h3>
+<p>Username
+<input type="text" name="username"></p>
+<p>Password
+<input type="password" name="password"></p>
+<p><input type="submit" value="Login"/>
+</form>
+
+</div>
+
+<?php include 'loggedout_footer.php' ?>
