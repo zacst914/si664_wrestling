@@ -4,18 +4,21 @@
     if ( isset($_POST['username']) && isset($_POST['password'])  ) {
         $u = mysql_real_escape_string($_POST['username']);
         $p = mysql_real_escape_string($_POST['password']);
-        $sql = "SELECT uniqname FROM user WHERE uniqname='$u' AND password='$p'";
+        $sql = "SELECT uniqname, account_type FROM user WHERE uniqname='$u' AND password='$p'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);	
         if ( $row === FALSE ) {
             unset($_SESSION['username']);
         } else { 
             $_SESSION['username'] = $row[0];
+            $_SESSION['acct_type'] = $row[1];
         }
     }
-    if ( isset($_SESSION['username']) ) {
+    if ( isset($_SESSION['username']) && $_SESSION['acct_type'] == 0 ) {
         header( "Location: announcements.php"); 
         return;
+    } elseif ( isset($_SESSION['username']) && $_SESSION['acct_type'] == 1 ) {
+        header( "Location: admin.php");
     }
 ?>
 

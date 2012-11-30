@@ -33,10 +33,6 @@
 					leaderboards
 					</a>
 					|
-					<a href="/mwrestling/upload.php">
-					upload
-					</a>
-					|
 					<a href="/mwrestling/myaccount.php">
 					my account
 					</a>
