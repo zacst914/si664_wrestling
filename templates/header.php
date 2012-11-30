@@ -1,8 +1,7 @@
 <?php 
     session_start();
     if ( !isset($_SESSION['username']) ) {
-        $_SESSION['error'] = 'You do not have access to this page';
-        header( "Location: index.php"); 
+        header( "Location: not_authorized.php"); 
         return;
     }
     ?>
