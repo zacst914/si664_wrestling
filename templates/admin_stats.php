@@ -25,11 +25,11 @@ function print_top_table() {
 
 function print_bottom_table() {
     document.getElementById('stats_table').innerHTML = "<?php $bottom_header = array('Rank', 'Lastname', 'Firstname', 'Reversals', 'Escapes', '3pt Nearfalls Against', '2pt Nearfalls Against', 'Riding Times Against'); print_header($bottom_header, 'Bottom Leaders'); $cat_arr = array('lastname', 'firstname', 'reversals', 'escapes', 'nearfall3pt_opp', 'nearfall2pt_opp', 'ridingtimepts_opp'); usort($wrestler_array, 'cmp_bottom'); print_table($cat_arr, $wrestler_array); ?>";
-    sortable.reinit();
+    sorttable.reinit();
 }
 
 function print_penalties_table() {
-    document.getElementById('stats_table').innerHTML = "<?php $penalties_header = array('Rank', 'Lastname', 'Firstname','Stalls For', 'Stalls Against', 'Stall Pts For', 'Stall Pts Against', 'Cautions', 'Cautions Opp', 'Caution Pts', 'Caution Pts Against'); print_header($penalties_header, 'Penalties Leaders'); $cat_arr = array('lastname', 'firstname', 'stalls_opp', 'stalls', 'stallpts', 'stallpts_opp', 'caution', 'caution_opp', 'cautionpts', 'cautionpts_opp'); usort($wrestler_array, 'cmp_penalties'); print_table($cat_arr, $wrestler_array); ?>";
+    document.getElementById('stats_table').innerHTML = "<?php $penalties_header = array('Rank', 'Lastname', 'Firstname', 'Stall Pts For', 'Stall Pts Against', 'Stalls For', 'Stalls Against', 'Caution Pts', 'Caution Pts Against', 'Cautions', 'Cautions Opp'); print_header($penalties_header, 'Penalties Leaders'); $cat_arr = array('lastname', 'firstname', 'stallpts', 'stallpts_opp',  'stalls_opp', 'stalls','cautionpts', 'cautionpts_opp','caution', 'caution_opp'); usort($wrestler_array, 'cmp_penalties'); print_table($cat_arr, $wrestler_array);  ?>";
     sorttable.reinit();
 }
 
