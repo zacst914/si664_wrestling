@@ -4,7 +4,7 @@
     if ( isset($_POST['username']) && isset($_POST['password'])  ) {
         $u = mysql_real_escape_string($_POST['username']);
         $p = mysql_real_escape_string($_POST['password']);
-        $sql = "SELECT uniqname, account_type FROM user WHERE uniqname='$u' AND password='$p'";
+        $sql = "SELECT uniqname, account_type, id FROM user WHERE uniqname='$u' AND password='$p'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);	
         if ( $row === FALSE ) {
@@ -13,6 +13,7 @@
         } else { 
             $_SESSION['username'] = $row[0];
             $_SESSION['acct_type'] = $row[1];
+			$_SESSION['id'] = $row[2];
         }
     }
     if ( isset($_SESSION['username']) && $_SESSION['acct_type'] == 0 ) {

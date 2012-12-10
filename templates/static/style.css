@@ -274,3 +274,63 @@ body
     background:#fff;
     color: #00319E;
 }
+
+#pwchange form
+{
+    #background: -webkit-gradient(linear, bottom, left 175px, from(white), to(#EEEEEE));
+    #background: -moz-linear-gradient(bottom, white, #EEEEEE 175px);
+    background: white;
+    margin: auto;
+    position: relative;
+    margin-top: 10px;
+    width: 200px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    color: #00319E;
+    text-decoration: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding:10px;
+    border: 1px solid #999;
+    border: inset 1px solid #333;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#pwchange input 
+{
+    display: block;
+    width:100px;
+    border: 1px solid #999;
+    height: 25px;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+#pwchange .button
+{
+    width:100px;
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    background: #00319E;
+    color:#fff;
+    font-family: Tahoma, Geneva, sans-serif;
+    height:30px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 1p solid #999;
+}
+
+#pwchange .button:hover {
+    background:#fff;
+    color: #00319E;
+}
