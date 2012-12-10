@@ -8,13 +8,15 @@
 		$old = mysql_real_escape_string($_POST['old']);
 		$new = mysql_real_escape_string($_POST['new']);
 		$confirm = mysql_real_escape_string($_POST['confirm']);
-		$newstripped = ereg_replace("[^A-Za-z0-9]", "", $new);
+		$newstripped = preg_replace("/[^a-zA-Z0-9]/", "", $new);
 		if ( $new != $confirm ) {
 			$_SESSION['error'] = 'New & Confirm Password entries do not match, please try again.';
 		} elseif ( $new != $newstripped ) {
 			$_SESSION['error'] = 'Passwords must consist of only letters and numbers, please try again.';
 		} elseif ( strlen($new) < 8 ) {
 			$_SESSION['error'] = 'Passwords must be at least eight characters long, please try again.';
+		} elseif ( strlen($new) > 15 ) {
+			$_SESSION['error'] = 'Passwords can be no longer than fifteen characters, please try again.';
 		} else {
 			$sql1 = "SELECT password FROM user WHERE id = $id";
 			$result1 = mysql_query($sql1);
