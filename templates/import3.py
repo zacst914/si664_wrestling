@@ -102,7 +102,7 @@ for id, value in sorted(dicts['uniqname'].iteritems(), key=lambda (k,v): (v,k), 
 	else: wclass = 10
 	
 	# Try to select his information from the 'user' table.
-	select = "SELECT * FROM user WHERE uniqname = '" + value + "'"
+	select = "SELECT uniqname FROM user WHERE uniqname = '" + value + "'"
 	cur.execute(select)
 	
 	# Fetch the result of this query and set it to a variable to be analyzed.
@@ -112,7 +112,7 @@ for id, value in sorted(dicts['uniqname'].iteritems(), key=lambda (k,v): (v,k), 
 	
 		# Try to iterate the returned value; if this succeeds it's a tuple and the wrestler already has an entry.
 		# If it fails, it's a NoneType.  Go to the below 'except'.
-		for entry in data: continue
+		if value == data[0]: continue
 		
 		# The wrestler already has an entry; compare the wrestler's current weight class with his previously recorded one.
 		if wclass == data[1]: continue
@@ -129,10 +129,10 @@ for id, value in sorted(dicts['uniqname'].iteritems(), key=lambda (k,v): (v,k), 
 	
 		# Add the wrestler's information to the 'user' table and assign a default password.
 		addition = "INSERT INTO user (firstname, lastname, uniqname, password, email, class_id) VALUES ('" + dicts['firstname'][id] + "', '" + dicts['lastname'][id] + "', '" + value + "', 'PASSw0rd123', '" + value + "@umich.edu', " + str(wclass) + ")"
-		cur.execute(addition)
-		cnx.commit()
-		#print "User " + value + " added to database!"
-		usercount+=1
+        cur.execute(addition)
+        cnx.commit()
+        #print "User " + value + " added to database!"
+        usercount+=1
 
 # Set a variable for the current time and determine what season it is.
 now = datetime.datetime.now()
