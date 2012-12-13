@@ -1,7 +1,5 @@
 <?php include "admin_header.php" ?>
-<?php 
-    require_once "print.php";
-    ?>
+<?php require_once "print.php"; ?>
 
 
 

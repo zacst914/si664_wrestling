@@ -70,8 +70,5 @@ if ( isset($_SESSION['success']) ) {
 }
 ?>
 
-<p>
- 
-</p>
 
 <?php include "footer.php" ?>

@@ -334,3 +334,30 @@ body
     background:#fff;
     color: #00319E;
 }
+
+#announcements {
+    margin: auto;
+    padding: 15px;
+    
+    
+}
+
+#announcements h3 {
+    text-decoration: underline;
+}
+
+
+#make_ann {
+    margin: auto;
+    padding: 15px;
+}
+
+
+
+
+
+
+
+
+
+
